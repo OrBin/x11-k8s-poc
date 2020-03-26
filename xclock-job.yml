@@ -1,0 +1,30 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  generateName: xclock-
+spec:
+  template:
+    metadata:
+      name: xclock
+    spec:
+      volumes:
+      - name: x11-pv
+        persistentVolumeClaim:
+          claimName: x11-pvc
+      containers:
+      - name: x11
+        image: orbin/x11
+        command: 
+        - "xclock"
+        args:
+        - "-digital"
+        - "-update"
+        - "1"
+        env:
+        - name: DISPLAY
+          value: ":0"
+        volumeMounts:
+        - mountPath: "/tmp/.X11-unix/"
+          name: x11-pv
+      restartPolicy: Never
+
