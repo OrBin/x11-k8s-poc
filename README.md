@@ -20,7 +20,7 @@ If the job you want to delete is `xclock-dh57z`:
 kubectl delete job xclock-dh57z
 ```
 
-If you want to delete all jobs (CAUTION: this may delete jobs not related to this PoC):
+If you want to delete all jobs (**CAUTION: this may delete jobs not related to this PoC**):
 ```bash
 kubectl delete job --all
 ```
